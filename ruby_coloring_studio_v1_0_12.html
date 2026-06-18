@@ -790,6 +790,93 @@ select option { background: white; }
   display: none;
 }
 .voice-transcript.active { display: block; }
+/* ── Auth Modal ── */
+#auth-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+#auth-overlay.visible { display: flex; }
+#auth-box {
+  background: white;
+  border-radius: 24px;
+  padding: 36px 32px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+  text-align: center;
+}
+#auth-box img.auth-logo { height: 90px; margin-bottom: 18px; }
+#auth-box h2 { font-family: 'Fredoka One', cursive; color: #e63946; font-size: 1.6rem; margin-bottom: 6px; }
+#auth-box p.auth-sub { font-size: 0.88rem; color: #7c5cbf; font-weight: 700; margin-bottom: 20px; }
+.auth-toggle { display: flex; background: #f5f5f5; border-radius: 50px; padding: 4px; margin-bottom: 20px; }
+.auth-toggle button { flex: 1; border: none; background: transparent; border-radius: 50px; padding: 8px; font-family: inherit; font-weight: 800; font-size: 0.88rem; cursor: pointer; color: #999; transition: all 0.15s; }
+.auth-toggle button.active { background: #e63946; color: white; box-shadow: 0 2px 8px rgba(230,57,70,0.3); }
+.auth-field { margin-bottom: 12px; text-align: left; }
+.auth-field label { font-size: 0.82rem; font-weight: 800; color: #2d2d2d; display: block; margin-bottom: 5px; }
+.auth-field input { width: 100%; border: 2px solid #eee; border-radius: 10px; padding: 11px 14px; font-size: 0.92rem; font-family: inherit; color: #2d2d2d; outline: none; }
+.auth-field input:focus { border-color: #e63946; }
+#auth-submit { width: 100%; background: #e63946; color: white; border: none; border-radius: 50px; padding: 13px; font-size: 1rem; font-weight: 800; font-family: inherit; cursor: pointer; margin-top: 8px; box-shadow: 0 4px 16px rgba(230,57,70,0.3); transition: background 0.15s; }
+#auth-submit:hover { background: #c1121f; }
+#auth-error { color: #e63946; font-size: 0.84rem; font-weight: 700; margin-top: 10px; min-height: 20px; }
+
+/* ── Credits bar ── */
+#credits-bar {
+  background: white;
+  border-radius: 50px;
+  padding: 10px 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+#credits-bar .credits-count { flex: 1; color: #2d2d2d; }
+#credits-bar .credits-count span { color: #e63946; }
+#btn-buy-more { background: #f5c518; color: #2d2d2d; border: none; border-radius: 50px; padding: 7px 16px; font-weight: 800; font-size: 0.85rem; font-family: inherit; cursor: pointer; transition: background 0.15s; }
+#btn-buy-more:hover { background: #d4a900; }
+#btn-logout { background: transparent; border: none; color: #bbb; font-size: 0.82rem; font-weight: 700; font-family: inherit; cursor: pointer; }
+#btn-logout:hover { color: #e63946; }
+
+/* ── Buy Credits Modal ── */
+#buy-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+#buy-overlay.visible { display: flex; }
+#buy-box {
+  background: white;
+  border-radius: 24px;
+  padding: 36px 32px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+  text-align: center;
+}
+#buy-box h2 { font-family: 'Fredoka One', cursive; color: #e63946; font-size: 1.5rem; margin-bottom: 6px; }
+#buy-box p { font-size: 0.88rem; color: #7c5cbf; font-weight: 700; margin-bottom: 20px; }
+.pack-grid { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+.pack-card { border: 2.5px solid #eee; border-radius: 14px; padding: 16px 18px; text-align: left; cursor: pointer; position: relative; transition: all 0.15s; display: flex; align-items: center; justify-content: space-between; }
+.pack-card:hover { border-color: #e63946; background: #fff8f8; }
+.pack-card .pack-name { font-family: 'Fredoka One', cursive; font-size: 1.1rem; color: #2d2d2d; }
+.pack-card .pack-credits { font-size: 0.84rem; color: #7c5cbf; font-weight: 700; }
+.pack-card .pack-price { font-size: 1.2rem; font-weight: 900; color: #e63946; }
+.pack-best { position: absolute; top: -10px; right: 14px; background: #f5c518; color: #2d2d2d; font-size: 0.72rem; font-weight: 800; padding: 2px 10px; border-radius: 10px; }
+#buy-close { background: transparent; border: 2px solid #eee; color: #999; border-radius: 50px; padding: 9px 24px; font-family: inherit; font-weight: 800; font-size: 0.88rem; cursor: pointer; }
+#buy-close:hover { border-color: #e63946; color: #e63946; }
+#buy-error { color: #e63946; font-size: 0.84rem; font-weight: 700; margin-top: 10px; min-height: 20px; }
 </style>
 </head>
 <body>
@@ -803,11 +890,11 @@ select option { background: white; }
   <p class="tagline">🎨 Tell Miss Ruby what to draw — she'll make your coloring pages in seconds!</p>
 </header>
 
-<!-- ═══ API KEY ══════════════════════════════════════════════════════════════ -->
-<div class="card">
-  <div class="card-title">🔑 Your OpenAI Key</div>
-  <input type="password" id="apiKey" placeholder="sk-..." />
-  <div class="helper">Your key is used only in your browser — never stored or shared.</div>
+<!-- Credits Bar -->
+<div id="credits-bar">
+  <div class="credits-count">✨ <span id="credits-display">0</span> credits remaining</div>
+  <button id="btn-buy-more">Buy More</button>
+  <button id="btn-logout">Log Out</button>
 </div>
 
 <!-- ═══ PAGE FORMAT ══════════════════════════════════════════════════════════ -->
@@ -1150,9 +1237,6 @@ function toggleVoice() {
 }
 
 function startListening() {
-  const key = document.getElementById('apiKey').value.trim();
-  if (!key) { alert('Enter your OpenAI API key first.'); return; }
-
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SR) { alert('Speech recognition not supported. Try Chrome or Edge.'); return; }
 
@@ -1231,9 +1315,6 @@ async function generatePromptsFromEither() {
   // If mic is on, stop it before sending
   if (isListening) stopListening();
 
-  const key = document.getElementById('apiKey').value.trim();
-  if (!key) { alert('Enter your OpenAI API key first.'); return; }
-
   const voiceText = document.getElementById('transcriptText').value.trim();
   const typeText  = document.getElementById('typeText').value.trim();
   const text = voiceText || typeText;
@@ -1255,9 +1336,10 @@ async function generatePromptsFromTranscript() {
 
 async function runPromptGeneration(key, text) {
   try {
-    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    const token = sessionStorage.getItem('studio_token');
+    const res = await fetch('https://studio.missrubycoloring.com/api/generate-prompts', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
       body: JSON.stringify({
         model: 'gpt-4o-mini',
         max_tokens: 1500,
@@ -1317,9 +1399,6 @@ function buildFinalPrompt(text) {
 
 async function startGeneration() {
   if (isRunning) return;
-
-  const key = document.getElementById('apiKey').value.trim();
-  if (!key) { alert('Enter your OpenAI API key.'); return; }
 
   const activePrompts = prompts.filter(p => (p.text || '').trim());
   if (!activePrompts.length) { alert('Add at least one description of what to draw!'); return; }
@@ -1384,13 +1463,21 @@ async function startGeneration() {
 }
 
 async function generateImage(key, prompt, size) {
-  const res = await fetch('https://api.openai.com/v1/images/generations', {
+  const token = sessionStorage.getItem('studio_token');
+  const res = await fetch('https://studio.missrubycoloring.com/api/generate', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
-    body: JSON.stringify({ model: 'gpt-image-1.5', prompt, n: 1, size, quality: 'medium' }),
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({ prompt: prompt, size: size })
   });
   const data = await res.json();
   if (!res.ok) throw new Error(data.error?.message || 'OpenAI API error');
+  // decrement credit display
+  const cur = parseInt(sessionStorage.getItem('studio_credits') || '0', 10);
+  sessionStorage.setItem('studio_credits', Math.max(0, cur - 1));
+  document.getElementById('credits-display').textContent = Math.max(0, cur - 1);
   return `data:image/png;base64,${data.data[0].b64_json}`;
 }
 
@@ -1555,6 +1642,145 @@ function randStr(len = 6) {
 }
 
 init();
+
+// ── Auth & Credits ──
+const API = 'https://studio.missrubycoloring.com/api';
+
+function handle401() {
+  sessionStorage.clear();
+  location.reload();
+}
+
+function updateCreditsDisplay() {
+  const c = sessionStorage.getItem('studio_credits') || '0';
+  document.getElementById('credits-display').textContent = c;
+}
+
+async function doAuth() {
+  const mode = document.getElementById('tab-login').classList.contains('active') ? 'login' : 'register';
+  const email = document.getElementById('auth-email').value.trim();
+  const password = document.getElementById('auth-password').value;
+  const errEl = document.getElementById('auth-error');
+  errEl.textContent = '';
+  if (!email || !password) { errEl.textContent = 'Please enter your email and password.'; return; }
+  try {
+    const res = await fetch(`${API}/auth/${mode}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+    if (res.status === 401) { errEl.textContent = 'Invalid email or password.'; return; }
+    if (!res.ok) { errEl.textContent = 'Something went wrong. Please try again.'; return; }
+    const data = await res.json();
+    sessionStorage.setItem('studio_token', data.token);
+    sessionStorage.setItem('studio_credits', data.credits);
+    updateCreditsDisplay();
+    document.getElementById('auth-overlay').classList.remove('visible');
+  } catch(e) {
+    errEl.textContent = 'Connection error. Please try again.';
+  }
+}
+
+function switchTab(tab) {
+  const isLogin = tab === 'login';
+  document.getElementById('tab-login').classList.toggle('active', isLogin);
+  document.getElementById('tab-register').classList.toggle('active', !isLogin);
+  document.getElementById('auth-submit').textContent = isLogin ? 'Log In' : 'Create Account';
+}
+
+async function checkout(priceId) {
+  const token = sessionStorage.getItem('studio_token');
+  const errEl = document.getElementById('buy-error');
+  errEl.textContent = '';
+  try {
+    const res = await fetch(`${API}/checkout`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+      body: JSON.stringify({ price_id: priceId })
+    });
+    if (res.status === 401) { handle401(); return; }
+    const data = await res.json();
+    window.location.href = data.url;
+  } catch(e) {
+    errEl.textContent = 'Could not start checkout. Please try again.';
+  }
+}
+
+// On load
+window.addEventListener('DOMContentLoaded', () => {
+  // Wire up buy more / logout
+  document.getElementById('btn-buy-more').addEventListener('click', () => {
+    document.getElementById('buy-overlay').classList.add('visible');
+  });
+  document.getElementById('btn-logout').addEventListener('click', () => {
+    sessionStorage.clear();
+    location.reload();
+  });
+
+  // Copy logo src to auth modal logo
+  const rubyLogo = document.querySelector('.logo-ruby');
+  if (rubyLogo) document.getElementById('auth-logo-img').src = rubyLogo.src;
+
+  // Show auth modal if no token
+  if (!sessionStorage.getItem('studio_token')) {
+    document.getElementById('auth-overlay').classList.add('visible');
+  } else {
+    updateCreditsDisplay();
+  }
+
+  // Allow Enter key in auth fields
+  ['auth-email','auth-password'].forEach(id => {
+    document.getElementById(id).addEventListener('keydown', e => { if (e.key === 'Enter') doAuth(); });
+  });
+});
+
 </script>
+<!-- Auth Modal -->
+<div id="auth-overlay">
+  <div id="auth-box">
+    <img class="auth-logo" id="auth-logo-img" src="" alt="Miss Ruby" />
+    <h2>Miss Ruby's Studio</h2>
+    <p class="auth-sub">Your AI coloring page creator</p>
+    <div class="auth-toggle">
+      <button id="tab-login" class="active" onclick="switchTab('login')">Log In</button>
+      <button id="tab-register" onclick="switchTab('register')">Create Account</button>
+    </div>
+    <div class="auth-field">
+      <label for="auth-email">Email</label>
+      <input type="email" id="auth-email" placeholder="you@example.com" />
+    </div>
+    <div class="auth-field">
+      <label for="auth-password">Password</label>
+      <input type="password" id="auth-password" placeholder="••••••••" />
+    </div>
+    <button id="auth-submit" onclick="doAuth()">Log In</button>
+    <div id="auth-error"></div>
+  </div>
+</div>
+
+<!-- Buy Credits Modal -->
+<div id="buy-overlay">
+  <div id="buy-box">
+    <h2>✨ Get More Credits</h2>
+    <p>Each credit = one coloring page generated</p>
+    <div class="pack-grid">
+      <div class="pack-card" onclick="checkout('price_1TijqIDkYcWOLXQTncL1GEQO')">
+        <div><div class="pack-name">Starter</div><div class="pack-credits">5 pages</div></div>
+        <div class="pack-price">$3.99</div>
+      </div>
+      <div class="pack-card" onclick="checkout('price_1TijrVDkYcWOLXQTr15eGlDS')">
+        <div class="pack-best">Best Value</div>
+        <div><div class="pack-name">Family</div><div class="pack-credits">10 pages</div></div>
+        <div class="pack-price">$6.99</div>
+      </div>
+      <div class="pack-card" onclick="checkout('price_1Tijs8DkYcWOLXQTH3FjSju7')">
+        <div><div class="pack-name">Color Club</div><div class="pack-credits">20 pages</div></div>
+        <div class="pack-price">$11.99</div>
+      </div>
+    </div>
+    <button id="buy-close" onclick="document.getElementById('buy-overlay').classList.remove('visible')">Cancel</button>
+    <div id="buy-error"></div>
+  </div>
+</div>
 </body>
 </html>
